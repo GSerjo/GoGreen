@@ -19,13 +19,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var _tableView: UITableView!
     private var _cases = [CaseEntity]()
+    private let _repository = CaseRepository.instance
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Go Green"
         try! DataStore.instance.create()
         
-        _cases = CaseRepository.instance.getAll()
+        _cases = _repository.getAll()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +53,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         performSegue(withIdentifier: SegueSelector.showCaseSelector, sender: entity)
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let trashAction = UIContextualAction(style: .destructive, title: "Trash") { [unowned self] (action, view, completionHandler) in
+            
+            let entity = self._cases[indexPath.item]
+            
+            self._cases.remove(at: indexPath.item)
+            self._repository.remove(id: entity.id)
+            self._tableView.beginUpdates()
+            self._tableView.deleteRows(at: [indexPath], with: .automatic)
+            self._tableView.endUpdates()
+            completionHandler(true)
+        }
+        trashAction.backgroundColor = .red
+        
+        let configuration = UISwipeActionsConfiguration(actions: [trashAction])
+        return configuration
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == SegueSelector.showCaseSelector {
             let controller = segue.destination as! CaseViewController
@@ -67,9 +88,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let submitAction = UIAlertAction(title: "Ok", style: .default) { [unowned controller] _ in
             let field = controller.textFields![0]
             if let name = field.text, name != "" {
-                self._cases.append(CaseEntity(value: name))
+                let entity = CaseEntity(value: name)
+                self._cases.append(entity)
+                self._repository.save(entity: entity)
                 self._tableView.reloadData()
-                print(name)
             }
         }
         
