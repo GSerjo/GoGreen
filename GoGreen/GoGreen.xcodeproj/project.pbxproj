@@ -18,6 +18,8 @@
 		B2B053082013D468000DD5B6 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B052FA2013D438000DD5B6 /* SQLite.framework */; };
 		B2B053092013D488000DD5B6 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B052FA2013D438000DD5B6 /* SQLite.framework */; };
 		B2B0530A2013D488000DD5B6 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2B052FA2013D438000DD5B6 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B2B053102013DC83000DD5B6 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B0530F2013DC83000DD5B6 /* DataStore.swift */; };
+		B2B053122013DDC4000DD5B6 /* CaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B053112013DDC4000DD5B6 /* CaseRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		B2B052D32013B656000DD5B6 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		B2B052D52013C3DA000DD5B6 /* CaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseViewController.swift; sourceTree = "<group>"; };
 		B2B052EF2013D438000DD5B6 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
+		B2B0530F2013DC83000DD5B6 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		B2B053112013DDC4000DD5B6 /* CaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 		B2B052BA2013ACFD000DD5B6 /* GoGreen */ = {
 			isa = PBXGroup;
 			children = (
+				B2B0530E2013DC69000DD5B6 /* Repositories */,
 				B2B052D02013B626000DD5B6 /* Entities */,
 				B2B052BB2013ACFD000DD5B6 /* AppDelegate.swift */,
 				B2B052BD2013ACFD000DD5B6 /* ViewController.swift */,
@@ -181,6 +186,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B2B0530E2013DC69000DD5B6 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				B2B0530F2013DC83000DD5B6 /* DataStore.swift */,
+				B2B053112013DDC4000DD5B6 /* CaseRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +330,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2B052D42013B656000DD5B6 /* Entity.swift in Sources */,
+				B2B053122013DDC4000DD5B6 /* CaseRepository.swift in Sources */,
+				B2B053102013DC83000DD5B6 /* DataStore.swift in Sources */,
 				B2B052D22013B63E000DD5B6 /* CaseEntity.swift in Sources */,
 				B2B052BE2013ACFD000DD5B6 /* ViewController.swift in Sources */,
 				B2B052BC2013ACFD000DD5B6 /* AppDelegate.swift in Sources */,

@@ -22,7 +22,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        title = "Go Green"
+        try! DataStore.instance.create()
+        
+        _cases = CaseRepository.instance.getAll()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +54,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == SegueSelector.showCaseSelector {
-            print("2")
             let controller = segue.destination as! CaseViewController
             controller.setup(entity: sender as! CaseEntity)
         }
