@@ -40,17 +40,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CaseCellId", for: indexPath) as! CaseCell
-        
+        cell.selectionStyle = .gray
         let entity = _cases[indexPath.item]
         cell._value.text = entity.value
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Void {
-        
-        tableView.deselectRow(at: indexPath, animated: true)
         let entity = _cases[indexPath.item]
         performSegue(withIdentifier: SegueSelector.showCaseSelector, sender: entity)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
